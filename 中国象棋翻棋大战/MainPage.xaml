@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="中国象棋翻棋大战.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:中国象棋翻棋大战"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="appbar">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton x:Name="abb_play" Icon="Play" Label="开局" Click="abb_play_Click"/>
+            <AppBarButton x:Name="abb_redo" Icon="Redo" Label="悔棋" Click="abb_redo_Click"/>
+            <AppBarButton x:Name="abb_999" Icon="Shop" Label="中国象棋 人机对战"  Click="abb_999_Click"/>
+            <AppBarButton x:Name="abb_wanfa" Icon="Help" Label="玩法说明" Click="abb_wanfa_Click"/>
+            <AppBarButton x:Name="abb_about" Icon="Contact" Label="关于" Click="abb_about_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid x:Name="g_root">
+
+        <Grid Width="199" Height="199" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,-100,-100">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Assets/ring.png"/>
+            </Grid.Background>
+            <Grid.Resources>
+                <Storyboard x:Name="Rotation">
+                    <DoubleAnimation Storyboard.TargetName="RotateTransform" Storyboard.TargetProperty="Angle"
+                             From="360" To="0" Duration="0:0:20" RepeatBehavior="Forever" />
+                </Storyboard>
+            </Grid.Resources>
+            <Grid.RenderTransform>
+                <RotateTransform x:Name="RotateTransform" CenterX="100" CenterY="100"/>
+            </Grid.RenderTransform>
+        </Grid>
+        <TextBlock Text="换肤" PointerPressed="TextBlock_PointerPressed" PointerEntered="TextBlock_PointerEntered" PointerExited="TextBlock_PointerExited" FontSize="20" Foreground="#412D1C" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,15"/>
+        <WebView x:Name="wv" Width="345" Height="410" Visibility="Visible"/>
+    </Grid>
+</Page>
